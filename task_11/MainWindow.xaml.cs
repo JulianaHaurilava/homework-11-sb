@@ -27,15 +27,15 @@ namespace task_11
         }
 
         StateMachine windowSwitcher;
-        public Repository r { get; set; }
+        public Repository r;
         public MainWindow()
         {
             InitializeComponent();
 
             r = new Repository("all_users.txt", "all_departments.txt");
             windowSwitcher = new StateMachine();
-            string[] WorkerTypes = { "Консультант", "Менеджер" };
-            cbWorkerType.ItemsSource = WorkerTypes;
+            string[] workerTypes = { "Консультант", "Менеджер" };
+            cbWorkerType.ItemsSource = workerTypes;
             cbDepartment.ItemsSource = r.AllDepartments;
         }
 
@@ -84,14 +84,15 @@ namespace task_11
 
         private void ToAddNewClientMenu(object sender, RoutedEventArgs e)
         {
-            AddNewUser addNewUserWindow = new AddNewUser(lClientInfo, r, r.AllDepartments);
+            AddNewUserWindow addNewUserWindow = new AddNewUserWindow(lClientInfo, r, r.AllDepartments);
             addNewUserWindow.Owner = this;
             addNewUserWindow.ShowDialog();
         }
 
         private void ToEditUserMenuC(object sender, RoutedEventArgs e)
         {
-
+            EditPhoneNumberWindow addNewUserWindow = new EditPhoneNumberWindow(lClientInfo, r);
+            addNewUserWindow.ShowDialog();
         }
 
         private void ToMenuM(object sender, RoutedEventArgs e)

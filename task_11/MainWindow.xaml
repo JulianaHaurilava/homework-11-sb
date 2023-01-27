@@ -9,7 +9,8 @@
         Height="600"
         Width="1080"
         ResizeMode="NoResize"
-        Background="Transparent">
+        Background="Transparent"
+        Name="mainWindow">
 
     <Grid
          Background="#292928">

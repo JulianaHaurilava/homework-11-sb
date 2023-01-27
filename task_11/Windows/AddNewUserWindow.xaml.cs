@@ -7,7 +7,7 @@ namespace task_11.Windows
     /// <summary>
     /// Interaction logic for AddNewUser.xaml
     /// </summary>
-    public partial class AddNewUser : Window
+    public partial class AddNewUserWindow : Window
     {
         class AddNewUserButtonEnabled
         {
@@ -75,7 +75,7 @@ namespace task_11.Windows
 
         AddNewUserButtonEnabled anu;
         public User userToAdd;
-        public AddNewUser(ListView l, Repository r, List<Department> allDepartments)
+        public AddNewUserWindow(ListView l, Repository r, List<Department> allDepartments)
         {
             InitializeComponent();
             anu = new AddNewUserButtonEnabled();
@@ -149,15 +149,15 @@ namespace task_11.Windows
             userToAdd = new User(tbSurname.Text, tbName.Text, tbPatronymic.Text,
                 tbPhoneNumber.Text, cbChooseDepartment.Text, tbSeries.Text, int.Parse(tbNumber.Text));
             Manager m = new Manager(r);
-            if (!m.AddNewUser(userToAdd))
+            if (m.AddNewUser(userToAdd))
             {
-                string errorString = "Клиент с введенным номером телефона уже зарегистрирован в системе!";
-                MessageBox.Show(errorString, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                l.Items.Refresh();
+                Close();
             }
             else
             {
-                l.Items.Refresh();
-                Hide();
+                string errorString = "Клиент с введенным номером телефона уже зарегистрирован в системе!";
+                MessageBox.Show(errorString, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

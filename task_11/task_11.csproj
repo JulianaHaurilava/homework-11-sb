@@ -64,8 +64,11 @@
     <Compile Include="PhoneNumber.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="Windows\AddNewUser.xaml.cs">
-      <DependentUpon>AddNewUser.xaml</DependentUpon>
+    <Compile Include="Windows\AddNewUserWindow.xaml.cs">
+      <DependentUpon>AddNewUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditPhoneNumberWindow.xaml.cs">
+      <DependentUpon>EditPhoneNumberWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -87,7 +90,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\AddNewUser.xaml">
+    <Page Include="Windows\AddNewUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EditPhoneNumberWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
