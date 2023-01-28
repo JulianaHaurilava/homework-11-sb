@@ -12,6 +12,8 @@
 
         new bool ChangePhoneNumber(User userToEdit, string newPhoneNumber);
 
+        void ChangeDepartment(User userToEdit, string newDepartmentName);
+
         void ChangeSeries(User userToEdit, string newSeries);
 
         void ChangeNumber(User userToEdit, int newNumber);

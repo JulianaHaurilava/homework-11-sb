@@ -5,17 +5,18 @@ namespace task_11
 {
     public class User
     {
-        static public ulong ID { get; set; }
+        public ulong ID { get; set; }
+        static public ulong staticID { get; set; }
         static User()
         {
             string stringID = (DateTime.Now.Year % 100).ToString() + DateTime.Now.Month.ToString("00") +
                               DateTime.Now.Day.ToString("00") + DateTime.Now.Hour.ToString("00") +
                               DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00");
-            ID = ulong.Parse(stringID);
+            staticID = ulong.Parse(stringID);
         }
         static ulong GetNextID()
         {
-            return ++ID;
+            return ++staticID;
         }
 
         public string Surname { get; set; }
@@ -56,7 +57,7 @@ namespace task_11
         public User(string userInfo)
         {
             string[] userInfoArray = userInfo.Split(' ');
-            ID = ulong.Parse(userInfoArray[0]);
+            ID = staticID = ulong.Parse(userInfoArray[0]);
             Surname = userInfoArray[1];
             Name = userInfoArray[2];
             Patronymic = userInfoArray[3];

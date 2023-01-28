@@ -11,16 +11,21 @@ namespace task_11
         {
             this.r = r;
         }
-        public bool ChangePhoneNumber(User userToEdit, string phoneNumber)
+        public bool ChangePhoneNumber(User userToEdit, string newPhoneNumber)
         {
-            PhoneNumber newPhoneNumber = new PhoneNumber(phoneNumber);
-            if (r[newPhoneNumber].Name == "")
+            PhoneNumber phoneNumber = new PhoneNumber(newPhoneNumber);
+            User owner = r[phoneNumber];
+            if (owner == null)
             {
-                userToEdit.PhoneNumber = newPhoneNumber;
+                userToEdit.PhoneNumber = phoneNumber;
                 Change lastChange = new Change(InfoToChange.PhoneNumber,
                     TypeOfChange.Editing, WorkerType.Consultant);
                 lastChange.WriteLastChangeInFile();
                 r.AllInFile();
+                return true;
+            }
+            else if (owner.PhoneNumber == userToEdit.PhoneNumber)
+            {
                 return true;
             }
             return false;

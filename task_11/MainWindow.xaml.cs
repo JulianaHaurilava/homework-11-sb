@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -43,8 +44,13 @@ namespace task_11
         {
             return user.Department.Name == (cbDepartment.SelectedItem as Department).Name;
         }
+
         private void cbWorkerType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            cbDepartment.SelectedItem = null;
+            lClientInfo.ItemsSource = null;
+
+            cbDepartment.IsEnabled = true;
             switch ((string)cbWorkerType.SelectedItem)
             {
                 case "Консультант":
@@ -61,7 +67,10 @@ namespace task_11
         }
         private void cbDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            lClientInfo.ItemsSource = r.AllUsers.Where(findClient);
+            if (cbDepartment.SelectedItem != null)
+            {
+                lClientInfo.ItemsSource = r.AllUsers.Where(findClient);
+            }
         }
 
         private void lClientInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -79,7 +88,10 @@ namespace task_11
 
         private void SortByFio(object sender, RoutedEventArgs e)
         {
-
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lClientInfo.ItemsSource);
+            view.SortDescriptions.Add(new SortDescription("Surname", ListSortDirection.Ascending));
+            view.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
+            view.SortDescriptions.Add(new SortDescription("Patronymic", ListSortDirection.Ascending));
         }
 
         private void ToAddNewClientMenu(object sender, RoutedEventArgs e)
@@ -91,8 +103,14 @@ namespace task_11
 
         private void ToEditUserMenuC(object sender, RoutedEventArgs e)
         {
-            EditPhoneNumberWindow addNewUserWindow = new EditPhoneNumberWindow(lClientInfo, r);
-            addNewUserWindow.ShowDialog();
+            EditPhoneNumberWindow editPhoneNumberWindow = new EditPhoneNumberWindow(lClientInfo, r);
+            editPhoneNumberWindow.ShowDialog();
+        }
+
+        private void ToEditUserMenuM(object sender, RoutedEventArgs e)
+        {
+            EditUserInfoWindow editUserInfoWindow = new EditUserInfoWindow(lClientInfo, r);
+            editUserInfoWindow.ShowDialog();
         }
 
         private void ToMenuM(object sender, RoutedEventArgs e)
@@ -104,6 +122,21 @@ namespace task_11
         {
             lClientInfo.SelectedItem = null;
             windowSwitcher.ChangeState(spMenuC);
+        }
+
+        private void DeleteUser(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить выбранного клиента?",
+                "Подтверждение удаления",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Manager m = new Manager(r);
+                m.DeleteUser((User)lClientInfo.SelectedItem);
+                lClientInfo.Items.RemoveAt(lClientInfo.SelectedIndex);
+            }
         }
     }
 }

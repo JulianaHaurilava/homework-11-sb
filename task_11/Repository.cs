@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 
 namespace task_11
 {
-    public class Repository
+    public class Repository: ObservableCollection<User>
     {
 
         private string usersFileName;
         private string departmentsFileName;
 
-        public List<User> AllUsers { get; set; } // Коллекция клиентов банка
+        public ObservableCollection<User> AllUsers { get; set; } // Коллекция клиентов банка
         public List<Department> AllDepartments { get; set; }
         public Repository(string usersFileName, string departmentsFileName)
         {
             this.usersFileName = usersFileName;
             this.departmentsFileName = departmentsFileName;
-            AllUsers = new List<User>();
+            AllUsers = new ObservableCollection<User>();
             AllDepartments = new List<Department>();
             ReadFile();
         }
@@ -32,7 +33,7 @@ namespace task_11
                     if (user.PhoneNumber == phoneNumber)
                         return user;
                 }
-                return new User();
+                return null;
             }
         }
 

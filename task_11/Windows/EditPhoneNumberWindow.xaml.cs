@@ -23,15 +23,16 @@ namespace task_11.Windows
             InitializeComponent();
             this.l = l;
             this.r = r;
+            cbDepartment.ItemsSource = r.AllDepartments;
 
             User selectedUser = (User)l.SelectedItem;
             tbSurname.Text = selectedUser.Surname;
             tbName.Text = selectedUser.Name;
             tbPatronymic.Text = selectedUser.Patronymic;
-            tbDepartment.Text = selectedUser.Department.Name;
+            cbDepartment.Text = selectedUser.Department.Name;
             tbPhoneNumber.Text = selectedUser.PhoneNumber.ReturnSimpleNumber();
-            tbSeries.Text = selectedUser.PassportSeries;
-            tbNumber.Text = selectedUser.PassportNumber.ToString();
+            tbSeries.Text = selectedUser.HiddenPassportSeries;
+            tbNumber.Text = selectedUser.HiddenPassportNumber;
         }
 
         private void bSaveChanges_Click(object sender, RoutedEventArgs e)
