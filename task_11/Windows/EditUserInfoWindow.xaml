@@ -5,18 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:task_11.Windows"
         mc:Ignorable="d"
-        Height="300"
-        Width="400"
-        Background="#d1d1e0"
+        Height="400"
+        Width="450"
+
         ResizeMode="NoResize"
-        Title="Редактирование номера телефона">
-    <Grid
-         Width="310"
-         Height="250">
+        Title="Редактирование информации о клиенте"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="#222629"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="30"/>
-            <ColumnDefinition Width="195"/>
+            <ColumnDefinition Width="72.8"/>
+            <ColumnDefinition Width="234.4"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -34,7 +39,7 @@
         <TextBlock 
                    Grid.ColumnSpan="3"
                    Grid.RowSpan="2"
-                   FontSize="16"
+                   FontSize="18"
                    Text="Внесите изменения"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
@@ -43,22 +48,24 @@
                    Text="Фамилия:"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Margin="5,0,0,0"/>
+                   Margin="10,5"/>
 
         <TextBox x:Name="tbSurname"
-                 Margin="2,2,5,2"
+                 Margin="5,3,10,3"
                  Grid.ColumnSpan="2"
                  Grid.Column="1"
                  Grid.Row="2"
+                 HorizontalContentAlignment="Center"
                  TextChanged="tbSurname_TextChanged"/>
 
         <TextBlock Grid.Row="3"
                    Text="Имя:"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Margin="5,0,0,0"/>
+                   Margin="10,5"/>
         <TextBox x:Name="tbName"
-                 Margin="2,2,5,2"
+                 Margin="5,3,10,3"
+                 HorizontalContentAlignment="Center"
                  Grid.ColumnSpan="2"
                  Grid.Column="1"
                  Grid.Row="3"
@@ -68,9 +75,10 @@
                    Text="Отчество:"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Margin="5,0,0,0"/>
+                   Margin="10,5"/>
         <TextBox x:Name="tbPatronymic"
-                 Margin="2,2,5,2"
+                 HorizontalContentAlignment="Center"
+                 Margin="5,3,10,3"
                  Grid.ColumnSpan="2"
                  Grid.Column="1"
                  Grid.Row="4"
@@ -80,9 +88,10 @@
                    Text="Телефон:"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Margin="5,0,0,0"/>
+                   Margin="10,5"/>
         <TextBox x:Name="tbPhoneNumber"
-                 Margin="2,2,5,2"
+                 HorizontalContentAlignment="Center"
+                 Margin="5,3,10,3"
                  Grid.ColumnSpan="2"
                  Grid.Column="1"
                  Grid.Row="5"
@@ -93,42 +102,44 @@
                    Text="Департамент:"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Margin="5,0,0,0"/>
+                   Margin="10,5"/>
         <ComboBox x:Name="cbDepartment"
-                 Margin="2,2,5,2"
+                  HorizontalContentAlignment="Center"
+                 Margin="5,3,10,3"
                  Grid.ColumnSpan="2"
                  Grid.Column="1"
                  Grid.Row="6"
-                 SelectionChanged="cbChooseDepartment_SelectionChanged"/>
+                 SelectionChanged="cbChooseDepartment_SelectionChanged" Height="25"/>
 
         <TextBlock Grid.Row="7"
                    Text="Паспорт:"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Margin="5,0,0,0"/>
+                   Margin="10,5"/>
         <TextBox x:Name="tbSeries"
-                 Margin="2"
+                 HorizontalContentAlignment="Center"
+                 Margin="5,3,5,3"
                  Grid.Column="1"
                  Grid.Row="7"
                  MaxLength="2"
                  TextChanged="tbSeries_TextChanged"/>
         <TextBox x:Name="tbNumber"
-                 Margin="3,2,4,2"
+                 HorizontalContentAlignment="Center"
+                 Margin="5,3,10,3"
                  Grid.Column="2"
                  Grid.Row="7"
                  MaxLength="7"
                  TextChanged="tbNumber_TextChanged"/>
 
         <Button x:Name="bSaveChanges"
-                Background="White"
                 Grid.ColumnSpan="3"
                 Grid.RowSpan="2"
                 Content="Сохранить изменения"
-                Width="150"
                 Grid.Row="8"
-                Margin="0,10,0,10"
                 IsEnabled="False"
-                Click="bSaveChanges_Click"/>
+                Click="bSaveChanges_Click"
+                Height="30"
+                Width="200"/>
 
     </Grid>
 </Window>

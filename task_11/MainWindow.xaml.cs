@@ -99,7 +99,10 @@ namespace task_11
             AddNewUserWindow addNewUserWindow = new AddNewUserWindow(lClientInfo, r, r.AllDepartments);
             addNewUserWindow.Owner = this;
             addNewUserWindow.ShowDialog();
-            lClientInfo.ItemsSource = r.AllUsers.Where(findClient);
+            if (addNewUserWindow.DialogResult == true)
+            {
+                lClientInfo.ItemsSource = r.AllUsers.Where(findClient);
+            }
         }
 
         private void ToEditUserMenuC(object sender, RoutedEventArgs e)

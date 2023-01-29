@@ -5,18 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:task_11.Windows"
         mc:Ignorable="d"
-        Height="300"
-        Width="400"
-        Background="#d1d1e0"
+        Height="400"
+        Width="450"
+
         ResizeMode="NoResize"
-        Title="Редактирование номера телефона">
-    <Grid
-         Width="310"
-         Height="250">
+        Title="Редактирование номера телефона"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="#222629"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="30"/>
-            <ColumnDefinition Width="195"/>
+            <ColumnDefinition Width="72.8"/>
+            <ColumnDefinition Width="234.4"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -34,7 +39,7 @@
         <TextBlock 
                    Grid.ColumnSpan="3"
                    Grid.RowSpan="2"
-                   FontSize="16"
+                   FontSize="18"
                    Text="Внесите изменения"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
