@@ -7,19 +7,19 @@ using System.Runtime.CompilerServices;
 
 namespace task_11
 {
-    public class Repository: ObservableCollection<User>
+    public class Repository
     {
 
         private string usersFileName;
         private string departmentsFileName;
 
-        public ObservableCollection<User> AllUsers { get; set; } // Коллекция клиентов банка
+        public List<User> AllUsers { get; set; } // Коллекция клиентов банка
         public List<Department> AllDepartments { get; set; }
         public Repository(string usersFileName, string departmentsFileName)
         {
             this.usersFileName = usersFileName;
             this.departmentsFileName = departmentsFileName;
-            AllUsers = new ObservableCollection<User>();
+            AllUsers = new List<User>();
             AllDepartments = new List<Department>();
             ReadFile();
         }

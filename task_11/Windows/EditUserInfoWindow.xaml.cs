@@ -90,19 +90,19 @@ namespace task_11.Windows
 
         private void tbPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            buttonIsActive.phoneNumberNotEmpty = tbPhoneNumber.Text.Length != 0;
+            buttonIsActive.phoneNumberNotEmpty = tbPhoneNumber.Text.Length > 10;
             bSaveChanges.IsEnabled = buttonIsActive.ButtonIsEnabled();
         }
 
         private void tbSeries_TextChanged(object sender, TextChangedEventArgs e)
         {
-            buttonIsActive.seriesNotEmpty = tbSeries.Text.Length != 0;
+            buttonIsActive.seriesNotEmpty = tbSeries.Text.Length == 0;
             bSaveChanges.IsEnabled = buttonIsActive.ButtonIsEnabled();
         }
 
         private void tbNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            buttonIsActive.numberNotEmpty = tbNumber.Text.Length != 0;
+            buttonIsActive.numberNotEmpty = tbNumber.Text.Length == 7;
             bSaveChanges.IsEnabled = buttonIsActive.ButtonIsEnabled();
         }
 

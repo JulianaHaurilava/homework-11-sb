@@ -53,7 +53,7 @@ namespace task_11.Windows
 
         private void tbPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            bSaveChanges.IsEnabled = tbPhoneNumber.Text.Length != 0;
+            bSaveChanges.IsEnabled = tbPhoneNumber.Text.Length > 10;
         }
     }
 }

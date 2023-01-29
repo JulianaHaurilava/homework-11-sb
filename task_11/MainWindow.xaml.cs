@@ -99,6 +99,7 @@ namespace task_11
             AddNewUserWindow addNewUserWindow = new AddNewUserWindow(lClientInfo, r, r.AllDepartments);
             addNewUserWindow.Owner = this;
             addNewUserWindow.ShowDialog();
+            lClientInfo.ItemsSource = r.AllUsers.Where(findClient);
         }
 
         private void ToEditUserMenuC(object sender, RoutedEventArgs e)
@@ -135,7 +136,10 @@ namespace task_11
             {
                 Manager m = new Manager(r);
                 m.DeleteUser((User)lClientInfo.SelectedItem);
-                lClientInfo.Items.RemoveAt(lClientInfo.SelectedIndex);
+                lClientInfo.ItemsSource = r.AllUsers.Where(findClient);
+
+                lClientInfo.SelectedItem = null;
+                windowSwitcher.ChangeState(spMenuM);
             }
         }
     }

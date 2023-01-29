@@ -43,25 +43,25 @@ namespace task_11.Windows
 
         private void tbPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            buttonIsActive.phoneNumberNotEmpty = tbPhoneNumber.Text.Length != 0;
+            buttonIsActive.phoneNumberNotEmpty = tbPhoneNumber.Text.Length > 10;
             bAddNewClient.IsEnabled = buttonIsActive.ButtonIsEnabled();
         }
 
         private void tbSeries_TextChanged(object sender, TextChangedEventArgs e)
         {
-            buttonIsActive.seriesNotEmpty = tbSeries.Text.Length != 0;
+            buttonIsActive.seriesNotEmpty = tbSeries.Text.Length == 2;
             bAddNewClient.IsEnabled = buttonIsActive.ButtonIsEnabled();
         }
 
         private void tbNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            buttonIsActive.numberNotEmpty = tbNumber.Text.Length != 0;
+            buttonIsActive.numberNotEmpty = tbNumber.Text.Length == 7;
             bAddNewClient.IsEnabled = buttonIsActive.ButtonIsEnabled();
         }
 
         private void cbDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            buttonIsActive.departmentNotEmpty = cbDepartment.Text.Length != 0; ;
+            buttonIsActive.departmentNotEmpty = cbDepartment.SelectedItem != null;
             bAddNewClient.IsEnabled = buttonIsActive.ButtonIsEnabled();
         }
 

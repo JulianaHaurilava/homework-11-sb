@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:task_11"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Приложение"
         Height="600"
         Width="1080"
         ResizeMode="NoResize"
@@ -13,7 +13,7 @@
         Name="mainWindow">
 
     <Grid
-         Background="#292928">
+         Background="#222629">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="330"/>
             <ColumnDefinition/>
@@ -41,7 +41,7 @@
                           IsEnabled="False"/>
         </StackPanel>
         <ListView x:Name="lClientInfo"
-                      Background="#F2f2f2"
+                      Background="#F7F9FB"
                       Grid.Column="1"
                       Grid.RowSpan="2"
                       SelectionMode="Single"
