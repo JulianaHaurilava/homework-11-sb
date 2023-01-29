@@ -32,6 +32,12 @@ namespace task_11.Windows
             tbNumber.Text = selectedUser.PassportNumber.ToString();
         }
 
+        /// <summary>
+        /// Осуществляет редактирование клиента.
+        /// Возвращает true, если редактирование прошло успешно
+        /// </summary>
+        /// <param name="previousUser"></param>
+        /// <returns></returns>
         private bool CommitChanges(User previousUser)
         {
             Manager m = new Manager(r);
@@ -55,7 +61,6 @@ namespace task_11.Windows
         {
             Manager m = new Manager(r);
             User previousUser = (User)l.SelectedItem;
-
 
             if (CommitChanges(previousUser))
             {
@@ -96,7 +101,7 @@ namespace task_11.Windows
 
         private void tbSeries_TextChanged(object sender, TextChangedEventArgs e)
         {
-            buttonIsActive.seriesNotEmpty = tbSeries.Text.Length == 0;
+            buttonIsActive.seriesNotEmpty = tbSeries.Text.Length == 2;
             bSaveChanges.IsEnabled = buttonIsActive.ButtonIsEnabled();
         }
 

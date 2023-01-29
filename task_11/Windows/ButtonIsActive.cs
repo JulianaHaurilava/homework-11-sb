@@ -27,6 +27,10 @@
             numberNotEmpty = notEmpty;
         }
 
+        /// <summary>
+        /// Возвращает true, если все поля заполнены верно. Иначе - false
+        /// </summary>
+        /// <returns></returns>
         public bool ButtonIsEnabled()
         {
             return surnameNotEmpty && nameNotEmpty && patronymicNotEmpty &&

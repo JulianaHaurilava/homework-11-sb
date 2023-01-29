@@ -5,7 +5,9 @@ namespace task_11
 {
     public class User
     {
-        public ulong ID { get; set; }
+        /// <summary>
+        /// Статическое свойство для генерации ID
+        /// </summary>
         static public ulong staticID { get; set; }
         static User()
         {
@@ -19,24 +21,19 @@ namespace task_11
             return ++staticID;
         }
 
+        public ulong ID { get; set; }
         public string Surname { get; set; }
         public string Name { get; set; }
         public string Patronymic { get; set; }
-
         public PhoneNumber PhoneNumber { get; set; }
-
         public Department Department { get; set; }
-
         public string PassportSeries { get; set; }
-
         public int PassportNumber { get; set; }
-
         public string HiddenPassportSeries
         {
             get => "**";
             set => HiddenPassportSeries = value;
         }
-
         public string HiddenPassportNumber
         {
             get => "*******";
@@ -53,7 +50,6 @@ namespace task_11
             PassportSeries = "";
             PassportNumber = 0;
         }
-
         public User(string userInfo)
         {
             string[] userInfoArray = userInfo.Split(' ');
@@ -66,7 +62,6 @@ namespace task_11
             PassportSeries = userInfoArray[6];
             PassportNumber = int.Parse(userInfoArray[7]);
         }
-
         public User(string surname, string name, string patronymic,
             string phoneNumber, string departmentName, string passportSeries, int passportNumber)
         {

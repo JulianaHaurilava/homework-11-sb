@@ -12,6 +12,9 @@ namespace task_11
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Вложенный класс для переключения StackPanels
+        /// </summary>
         class StateMachine
         {
             private StackPanel spCurrentPanel;
@@ -27,6 +30,7 @@ namespace task_11
             }
         }
 
+        string workerType;
         StateMachine windowSwitcher;
         public Repository r;
         public MainWindow()
@@ -51,7 +55,8 @@ namespace task_11
             lClientInfo.ItemsSource = null;
 
             cbDepartment.IsEnabled = true;
-            switch ((string)cbWorkerType.SelectedItem)
+            workerType = (string)cbWorkerType.SelectedItem;
+            switch (workerType)
             {
                 case "Консультант":
                     gvcPassportSeries.DisplayMemberBinding = new Binding("HiddenPassportSeries");
@@ -86,6 +91,12 @@ namespace task_11
             }
         }
 
+
+        /// <summary>
+        /// Сортирует компоненты listview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SortByFio(object sender, RoutedEventArgs e)
         {
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lClientInfo.ItemsSource);
@@ -94,6 +105,11 @@ namespace task_11
             view.SortDescriptions.Add(new SortDescription("Patronymic", ListSortDirection.Ascending));
         }
 
+        /// <summary>
+        /// Показывает окно для добавления нового клиента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToAddNewClientMenu(object sender, RoutedEventArgs e)
         {
             AddNewUserWindow addNewUserWindow = new AddNewUserWindow(lClientInfo, r, r.AllDepartments);
@@ -105,29 +121,51 @@ namespace task_11
             }
         }
 
-        private void ToEditUserMenuC(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Показывает окно для редактирования клиента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToEditUserMenu(object sender, RoutedEventArgs e)
         {
-            EditPhoneNumberWindow editPhoneNumberWindow = new EditPhoneNumberWindow(lClientInfo, r);
-            editPhoneNumberWindow.ShowDialog();
+            switch (workerType)
+            {
+                case "Консультант":
+                    EditPhoneNumberWindow editPhoneNumberWindow = new EditPhoneNumberWindow(lClientInfo, r);
+                    editPhoneNumberWindow.ShowDialog();
+                    break;
+                case "Менеджер":
+                    EditUserInfoWindow editUserInfoWindow = new EditUserInfoWindow(lClientInfo, r);
+                    editUserInfoWindow.ShowDialog();
+                    break;
+            }
         }
 
-        private void ToEditUserMenuM(object sender, RoutedEventArgs e)
-        {
-            EditUserInfoWindow editUserInfoWindow = new EditUserInfoWindow(lClientInfo, r);
-            editUserInfoWindow.ShowDialog();
-        }
-
-        private void ToMenuM(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Осуществляет переход из меню работы с клиентом в главное меню
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ReturnToMenu(object sender, RoutedEventArgs e)
         {
             lClientInfo.SelectedItem = null;
-            windowSwitcher.ChangeState(spMenuM);
-        }
-        private void ToMenuC(object sender, RoutedEventArgs e)
-        {
-            lClientInfo.SelectedItem = null;
-            windowSwitcher.ChangeState(spMenuC);
+            switch (workerType)
+            {
+                case "Консультант":
+                    windowSwitcher.ChangeState(spMenuC);
+                    break;
+                case "Менеджер":
+                    windowSwitcher.ChangeState(spMenuM);
+                    break;
+            }
+            
         }
 
+        /// <summary>
+        /// Осуществляет удаление клиента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeleteUser(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить выбранного клиента?",

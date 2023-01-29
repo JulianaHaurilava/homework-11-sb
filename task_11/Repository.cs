@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Runtime.CompilerServices;
 
 namespace task_11
 {
@@ -14,7 +10,7 @@ namespace task_11
         private string departmentsFileName;
 
         public List<User> AllUsers { get; set; } // Коллекция клиентов банка
-        public List<Department> AllDepartments { get; set; }
+        public List<Department> AllDepartments { get; set; } // Коллекция всех департаментов банка
         public Repository(string usersFileName, string departmentsFileName)
         {
             this.usersFileName = usersFileName;
@@ -24,6 +20,11 @@ namespace task_11
             ReadFile();
         }
 
+        /// <summary>
+        /// Индексатор, находящий клиента по номеру телефона
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <returns></returns>
         public User this[PhoneNumber phoneNumber]
         {
             get

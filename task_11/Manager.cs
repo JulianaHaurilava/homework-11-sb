@@ -94,6 +94,12 @@ namespace task_11
                 r.AllInFile();
             }
         }
+
+        /// <summary>
+        /// Добавляет нового клиента в коллекцию репозитория
+        /// </summary>
+        /// <param name="newUser"></param>
+        /// <returns></returns>
         public bool AddNewUser(User newUser)
         {
             if (r[newUser.PhoneNumber] == null)
@@ -106,9 +112,15 @@ namespace task_11
             return false;
         }
 
+        /// <summary>
+        /// Удаляет выбранного клиента
+        /// </summary>
+        /// <param name="userToDelete"></param>
         public void DeleteUser(User userToDelete)
         {
             r.AllUsers.Remove(userToDelete);
+            Change lastChange = new Change(InfoToChange.AllAccount, TypeOfChange.Deleting, WorkerType.Manager);
+            lastChange.WriteLastChangeInFile();
             r.AllInFile();
         }
     }

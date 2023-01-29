@@ -9,17 +9,14 @@ namespace task_11.Windows
     /// </summary>
     public partial class AddNewUserWindow : Window
     {
-        ListView l;
         Repository r;
-
         ButtonIsActive buttonIsActive;
-        public User userToAdd;
+
         public AddNewUserWindow(ListView l, Repository r, List<Department> allDepartments)
         {
             InitializeComponent();
             buttonIsActive = new ButtonIsActive(false);
             cbDepartment.ItemsSource = allDepartments;
-            this.l = l;
             this.r = r;
         }
 
@@ -67,12 +64,12 @@ namespace task_11.Windows
 
         private void bAddNewClient_Click(object sender, RoutedEventArgs e)
         {
-            userToAdd = new User(tbSurname.Text, tbName.Text, tbPatronymic.Text,
+            User userToAdd = new User(tbSurname.Text, tbName.Text, tbPatronymic.Text,
                 tbPhoneNumber.Text, cbDepartment.Text, tbSeries.Text, int.Parse(tbNumber.Text));
             Manager m = new Manager(r);
             if (m.AddNewUser(userToAdd))
             {
-                l.Items.Refresh();
+                DialogResult = true;
                 Close();
             }
             else

@@ -22,6 +22,10 @@
             number = "";
         }
 
+        /// <summary>
+        /// Возвращает строку, содержащую номер телефона без спец символов
+        /// </summary>
+        /// <returns></returns>
         public string ReturnSimpleNumber()
         {
             return countryCode + cityCode + number;

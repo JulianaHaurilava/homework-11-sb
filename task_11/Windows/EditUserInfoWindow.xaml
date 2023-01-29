@@ -46,10 +46,7 @@
 
         <TextBlock Grid.Row="2"
                    Text="Фамилия:"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Margin="10,5"/>
-
+                   Style="{StaticResource ParametersTextBlockTheme}"/>
         <TextBox x:Name="tbSurname"
                  Margin="5,3,10,3"
                  Grid.ColumnSpan="2"
@@ -60,9 +57,7 @@
 
         <TextBlock Grid.Row="3"
                    Text="Имя:"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Margin="10,5"/>
+                   Style="{StaticResource ParametersTextBlockTheme}"/>
         <TextBox x:Name="tbName"
                  Margin="5,3,10,3"
                  HorizontalContentAlignment="Center"
@@ -73,9 +68,7 @@
 
         <TextBlock Grid.Row="4"
                    Text="Отчество:"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Margin="10,5"/>
+                   Style="{StaticResource ParametersTextBlockTheme}"/>
         <TextBox x:Name="tbPatronymic"
                  HorizontalContentAlignment="Center"
                  Margin="5,3,10,3"
@@ -86,9 +79,7 @@
 
         <TextBlock Grid.Row="5"
                    Text="Телефон:"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Margin="10,5"/>
+                   Style="{StaticResource ParametersTextBlockTheme}"/>
         <TextBox x:Name="tbPhoneNumber"
                  HorizontalContentAlignment="Center"
                  Margin="5,3,10,3"
@@ -100,9 +91,7 @@
 
         <TextBlock Grid.Row="6"
                    Text="Департамент:"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Margin="10,5"/>
+                   Style="{StaticResource ParametersTextBlockTheme}"/>
         <ComboBox x:Name="cbDepartment"
                   HorizontalContentAlignment="Center"
                  Margin="5,3,10,3"
@@ -113,9 +102,7 @@
 
         <TextBlock Grid.Row="7"
                    Text="Паспорт:"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Margin="10,5"/>
+                   Style="{StaticResource ParametersTextBlockTheme}"/>
         <TextBox x:Name="tbSeries"
                  HorizontalContentAlignment="Center"
                  Margin="5,3,5,3"

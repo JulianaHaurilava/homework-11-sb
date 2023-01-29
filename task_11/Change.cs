@@ -2,7 +2,7 @@
 using System.IO;
 
 enum InfoToChange { Surname, Name, Patronymic, PhoneNumber, PassportSeriesNumber, AllAccount }
-enum TypeOfChange { Editing, Adding }
+enum TypeOfChange { Editing, Adding, Deleting }
 enum WorkerType { Consultant, Manager }
 
 namespace task_11
@@ -13,7 +13,6 @@ namespace task_11
         private string changedInfo;
         private string typeOfChange;
         private string editor;
-
 
         public Change(InfoToChange changedInfo, TypeOfChange typeOfChange, WorkerType editor)
         {
@@ -51,6 +50,9 @@ namespace task_11
                     break;
                 case TypeOfChange.Adding:
                     this.typeOfChange = "Добавление новой записи";
+                    break;
+                case TypeOfChange.Deleting:
+                    this.typeOfChange = "Удаление записи";
                     break;
                 default:
                     this.typeOfChange = "Ошибка";
